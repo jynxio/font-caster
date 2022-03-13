@@ -5,12 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Font Filter Demo</title>
-    <link rel="stylesheet" href="/style/reset.css">
-    <link rel="stylesheet" href="/style/font.css">
-    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/font.css">
+    <link rel="stylesheet" href="./style/index.css">
 </head>
 <body>
-    <section id="l"><input type="text" value="测试" /></section>
-    <section id="r"><input type="text" value="测试" /></section>
+    <section id="t"><input type="text" placeholder="..." /></section>
+    <section id="b"><input type="text" placeholder="..." readonly="true" /></section>
+    <script>
+
+        const i_t = document.querySelector( "#t > input" );
+        const i_b = document.querySelector( "#b > input" );
+
+        i_t.addEventListener( "input", e => {
+
+            i_b.value = i_t.value;
+
+        } );
+
+    </script>
 </body>
 </html>

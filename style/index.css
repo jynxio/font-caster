@@ -1,29 +1,36 @@
 body {
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
+    background-color: #000;
 }
 
-#l {
-    grid-row: 1;
-    grid-column: 1 / 2;
+#t {
+    grid-row: 1 / 2;
+    grid-column: 1;
 }
 
-#r {
-    grid-row: 1;
-    grid-column: 2 / 3;
+#b {
+    grid-row: 2 / 3;
+    grid-column: 1;
 }
 
 input {
     display: block;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    border: 1px dashed #000;
+    border: 1px dashed #fff;
     outline: none;
-    font-size: 12rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 20vw;
     font-style: normal;
     font-weight: normal;
     text-align: center;
     line-height: 1.25;
+}
+
+#t > input {
+    font-family: "Great Vibes", "Noto Serif SC";
 }
