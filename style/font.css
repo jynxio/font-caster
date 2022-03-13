@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Great Vibes";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url( "/static/font/condensed/great-vibes-regular.woff2" ) format( "woff2" ),
+        url( "/static/font/condensed/great-vibes-regular.ttf" ) format( "truetype" );
+}
+
+@font-face {
+    font-family: "Noto Serif SC";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url( "/static/font/condensed/noto-serif-sc-regular.woff2" ) format( "woff2" ),
+        url( "/static/font/condensed/noto-serif-sc-regular.ttf" ) format( "truetype" );
+}
