@@ -1,10 +1,10 @@
 @font-face {
-    font-family: "Great Vibes";
+    font-family: "IBM Plex Serif";
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url( "../static/font/condensed/great-vibes-regular.woff2" ) format( "woff2" ),
-        url( "../static/font/condensed/great-vibes-regular.ttf" ) format( "truetype" );
+    src: url( "../static/font/condensed/IBMPlexSerif-ExtraLight.woff2" ) format( "woff2" ),
+        url( "../static/font/condensed/IBMPlexSerif-ExtraLight.ttf" ) format( "truetype" );
 }
 
 @font-face {
@@ -12,6 +12,6 @@
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url( "../static/font/condensed/noto-serif-sc-regular.woff2" ) format( "woff2" ),
-        url( "../static/font/condensed/noto-serif-sc-regular.ttf" ) format( "truetype" );
+    src: url( "../static/font/condensed/NotoSansSC-Thin.woff2" ) format( "woff2" ),
+        url( "../static/font/condensed/NotoSansSC-Thin.ttf" ) format( "truetype" );
 }

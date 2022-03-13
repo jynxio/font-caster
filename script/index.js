@@ -1,11 +1,32 @@
 const fontFilter = require( "./fontFilter" );
 
-const characters = "abc123";
-const path_1 = "./static/font/full/great-vibes-regular.ttf";
-const path_2 = "./static/font/condensed";
+filterEnglishFont();
+filterChineseFont();
 
-fontFilter( characters, path_1, path_2 ).then( response => {
+function filterEnglishFont() {
 
-    console.log( response );
+    const characters = "abcd1234,.?";
+    const path_1 = "./static/font/full/IBMPlexSerif-ExtraLight.ttf";
+    const path_2 = "./static/font/condensed";
 
-} );
+    fontFilter( characters, path_1, path_2 ).then( response => {
+
+        response && console.log( "👌English font." );
+
+    } );
+
+}
+
+function filterChineseFont() {
+
+    const characters = "你我他，。？";
+    const path_1 = "./static/font/full/NotoSansSC-Thin.ttf";
+    const path_2 = "./static/font/condensed";
+
+    fontFilter( characters, path_1, path_2 ).then( response => {
+
+        response && console.log( "👌Chinese font." );
+
+    } );
+
+}
