@@ -1,0 +1,29 @@
+body {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+#l {
+    grid-row: 1;
+    grid-column: 1 / 2;
+}
+
+#r {
+    grid-row: 1;
+    grid-column: 2 / 3;
+}
+
+input {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px dashed #000;
+    outline: none;
+    font-size: 12rem;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.25;
+}
