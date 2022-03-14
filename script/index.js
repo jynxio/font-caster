@@ -8,7 +8,10 @@ const parseHtml = require( "./parseHtml" );
 
 // test
 
-
+// TODO 使用隶变 Libian SC 字体。
+// TODO 使用fonteditor-core来转换不同格式的字体文件。
+// TODO glyphhanger可以subset字体，但是subset的核心代码是python？？？
+// TODO fonteditor-core似乎可以subset字体文件。
 
 // test
 
