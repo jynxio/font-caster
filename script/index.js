@@ -1,7 +1,41 @@
+const fs = require( "fs" );
+
 const refineFont = require( "./refineFont" );
 
-refineEnglishFontFile();
-refineChineseFontFile();
+const parseHtml = require( "./parseHtml" );
+
+/* ---------------------------------------------------------------------------- -------------------*/
+
+readHtmlFile( "./static/html/test.html" ).then( html => {
+
+    const test = parseHtml( html );
+
+    console.log( test );
+
+} );
+
+/**
+ * 异步读取html文件，返回html文件的内容（字符串）。
+ * @param {string} path - html文件的地址，比如"./test.html"。
+ * @returns {Promise} - Promise代表html文件的内容。
+ */
+function readHtmlFile( path ) {
+
+    return new Promise( resolve => {
+
+        let html = "";
+
+        const reader = fs.createReadStream( path, { encoding: "utf8" } );
+
+        reader.on( "data", chunk => html += chunk );
+        reader.on( "end", _ => resolve( html ) );
+
+    } );
+
+}
+
+// refineEnglishFontFile();
+// refineChineseFontFile();
 
 function refineEnglishFontFile() {
 
