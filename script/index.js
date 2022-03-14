@@ -1,4 +1,4 @@
-const fontFilter = require( "./fontFilter" );
+const refineFont = require( "./refineFont" );
 
 filterEnglishFont();
 filterChineseFont();
@@ -9,7 +9,7 @@ function filterEnglishFont() {
     const path_1 = "./static/font/full/IBMPlexSerif-ExtraLight.ttf";
     const path_2 = "./static/font/condensed";
 
-    fontFilter( characters, path_1, path_2 ).then( response => {
+    refineFont( characters, path_1, path_2 ).then( response => {
 
         response && console.log( "👌English font." );
 
@@ -23,7 +23,7 @@ function filterChineseFont() {
     const path_1 = "./static/font/full/NotoSansSC-Thin.ttf";
     const path_2 = "./static/font/condensed";
 
-    fontFilter( characters, path_1, path_2 ).then( response => {
+    refineFont( characters, path_1, path_2 ).then( response => {
 
         response && console.log( "👌Chinese font." );
 
