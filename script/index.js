@@ -6,7 +6,13 @@ const parseHtml = require( "./parseHtml" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
-( async function() {
+// test
+
+
+
+// test
+
+async function main() {
 
     const html = await readUtf8File( "./static/html/test.html" );
 
@@ -28,7 +34,7 @@ const parseHtml = require( "./parseHtml" );
 
     console.log( success ? "🟢：写入成功" : "🔴：写入失败" );
 
-} )();
+}
 
 /**
  * 异步读取使用utf-8编码的文件，最后以字符串形式返回该文件的内容。
