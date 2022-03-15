@@ -10,22 +10,22 @@ const opentype = require( "opentype.js" );
 
 // test
 
-opentype.loadSync( "./static/font/full/NotoSansSC-Thin.ttf", function( error, font ) {
+// const font = opentype.loadSync( "./static/font/full/NotoSansSC-Regular.otf");
 
-    if ( error ) {
+// const font_family = font.names.fontFamily.en;
+// const font_weight = font.names.fontSubfamily.en;
+// const glyph_number = font.numGlyphs;
 
-        console.log( "Font could not be loaded: " + error );
+// const subset_font_name = font_family + "-" + font_weight + "-subset.otf";
 
-        return;
-
-    }
-
-
-
-
-} );
+// console.log( font.stringToGlyphs( "你我他" ) );
+// console.log( font.charToGlyph( "你" ) );
+// console.log( font.charToGlyph( "❤️" ) );
+// console.log( font.glyphs.get( 7182 ).path );
 
 // test
+
+main();
 
 async function main() {
 
@@ -43,11 +43,54 @@ async function main() {
 
     }
 
-    const txt = Array.from( unicodes ).join( "," );
+    const font = opentype.loadSync( "./static/font/full/NotoSerifSC-Regular.otf");
 
-    const success = await writeUtf8File( "./static/character/character.txt", txt );
+    const notdef_glyph = font.glyphs.get( 0 );
 
-    console.log( success ? "🟢：写入成功" : "🔴：写入失败" );
+    notdef_glyph.name = ".notdef";
+
+    const glyphs = [ notdef_glyph ];
+
+    for ( let unicode of unicodes ) {
+
+        const character = String.fromCodePoint( unicode );
+
+        const glyph = font.charToGlyph( character );
+
+        if ( glyph.unicode === undefined ) continue;
+
+        glyphs.push( glyph );
+
+    }
+
+    const subset_font = new opentype.Font( {
+        familyName: font.names.fontFamily.en,
+        styleName: font.names.fontSubfamily.en,
+        unitsPerEm: font.unitsPerEm,
+        ascender: font.ascender,
+        descender: font.descender,
+        designer: font.getEnglishName('designer'),
+        designerURL: font.getEnglishName('designerURL'),
+        manufacturer: font.getEnglishName('manufacturer'),
+        manufacturerURL: font.getEnglishName('manufacturerURL'),
+        license: font.getEnglishName('license'),
+        licenseURL: font.getEnglishName('licenseURL'),
+        version: font.getEnglishName('version'),
+        description: font.getEnglishName('description'),
+        copyright: "",
+        trademark: font.getEnglishName('trademark'),
+        glyphs: glyphs
+    } );
+
+    subset_font.download( "./static/font/condensed/test.otf" );
+
+
+    // 写入文件
+    // const txt = Array.from( unicodes ).join( "," );
+
+    // const success = await writeUtf8File( "./static/character/character.txt", txt );
+
+    // console.log( success ? "🟢：写入成功" : "🔴：写入失败" );
 
 }
 

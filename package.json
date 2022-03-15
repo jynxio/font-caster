@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "refine": "node ./script/index.js"
+        "subset": "node ./script/index.js"
     },
     "dependencies": {
         "fontmin": "^0.9.9",
