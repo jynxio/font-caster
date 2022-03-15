@@ -4,14 +4,26 @@ const refineFont = require( "./refineFont" );
 
 const parseHtml = require( "./parseHtml" );
 
+const opentype = require( "opentype.js" );
+
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-// TODO 使用隶变 Libian SC 字体。
-// TODO 使用fonteditor-core来转换不同格式的字体文件。
-// TODO glyphhanger可以subset字体，但是subset的核心代码是python？？？
-// TODO fonteditor-core似乎可以subset字体文件。
+opentype.loadSync( "./static/font/full/NotoSansSC-Thin.ttf", function( error, font ) {
+
+    if ( error ) {
+
+        console.log( "Font could not be loaded: " + error );
+
+        return;
+
+    }
+
+
+
+
+} );
 
 // test
 
