@@ -84,7 +84,6 @@ async function main() {
 
     subset_font.download( "./static/font/condensed/test.otf" );
 
-
     // 写入文件
     // const txt = Array.from( unicodes ).join( "," );
 

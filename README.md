@@ -11,6 +11,8 @@
 
 ![](./static/image/1.png)
 
+
+
 # 使用
 
 1. 执行 `npm install` （下载 `fontmin` ）。
@@ -18,6 +20,14 @@
 3. 运行 `index.html` （直接运行），即可使用简化的字体文件的效果。
 4. `/script/index.js` 文件用于控制如何简化字体文件，核心代码则是 `/script/fontFilter.js` 文件，请阅读该文件来获知使用细则。
 
+
+
 # 许可
 
 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE)
+
+
+
+# 进度
+
+不再基于 fountain，转而基于 opentype.js。
