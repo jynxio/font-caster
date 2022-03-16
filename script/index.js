@@ -29,27 +29,43 @@ main();
 
 async function main() {
 
-    const response = await deepTraversalDirectory( "./dir-test" );
+    /* 获取html文件 */
+    const files = await deepTraversalDirectory( "./page" );
 
-    // for ( let item of response ) console.log( item );
+    const html_files = [];
 
-    return;
+    for ( let file of files ) {
 
-    const html = await readUtf8File( "./static/html/test.html" );
+        const type = parseFileType( file.name );
 
-    const characters = parseHtml( html );
-    const length = Array.from( characters ).length;
-    const unicodes = new Set();
+        if ( type !== "html" ) continue;
 
-    for ( let i = 0; i < length; i++ ) {
-
-        const unicode = characters.codePointAt( i );
-
-        unicodes.add( unicode );
+        html_files.push( file );
 
     }
 
-    const font = opentype.loadSync( "./static/font/full/NotoSerifSC-Regular.otf");
+    /*  */
+    const unicodes = new Set();
+
+    for ( let file of html_files ) {
+
+        const content = await readUtf8File( file.path );
+
+        const characters = parseHtml( content );
+
+        const length = Array.from( characters ).length; //  String.prototype.length无法准确计算字符的长度，这是为了向后兼容而故意设计的。
+
+        for ( let i = 0; i < length; i++ ) {
+
+            const unicode = characters.codePointAt( i );
+
+            unicodes.add( unicode );
+
+        }
+
+    }
+
+    const font = opentype.loadSync( "./static/font/full/NotoSerifSC-Regular.otf" );
 
     const notdef_glyph = font.glyphs.get( 0 );
 
@@ -69,7 +85,7 @@ async function main() {
 
     }
 
-    const subset_font = new opentype.Font( {
+    const subset_font = new opentype.Font( { // TODO 这里👇要优化一下。
         familyName: font.names.fontFamily.en,
         styleName: font.names.fontSubfamily.en,
         unitsPerEm: font.unitsPerEm,
@@ -89,6 +105,10 @@ async function main() {
     } );
 
     subset_font.download( "./static/font/condensed/test.otf" );
+
+    console.log( "🟢" );
+
+    return;
 
     // 写入文件
     // const txt = Array.from( unicodes ).join( "," );
@@ -120,6 +140,26 @@ function readUtf8File( path ) {
 }
 
 /**
+ * 异步以utf8编码写入一个文件。
+ * @param {string} path - 待写入文件的地址，若该文件已存在，则会覆写该文件，若该文件不存在，则会创建一个文件。
+ * @param {string} data - 待写入的字符串内容。
+ * @returns {Promise} - Promise代表是否写入成功。
+ */
+function writeUtf8File( path, data ) {
+
+    return new Promise( resolve => {
+
+        fs.writeFile( path, data, "utf8", error => {
+
+            resolve( error ? false : true );
+
+        } );
+
+    } );
+
+}
+
+/**
  * （异步）深度遍历目录，然后返回其内所有文件的信息（文件名与地址）。
  * @param {string} path - 目录的地址，比如"./page"。
  * @returns {Promise} - Promise代表一个包含文件信息的数据。
@@ -139,7 +179,7 @@ async function deepTraversalDirectory( path ) {
 
         if ( dirent.isFile() ) {
 
-            files.push( { name, adress } );
+            files.push( { name, path: adress } );
 
         } else if ( dirent.isDirectory() ) {
 
@@ -194,26 +234,6 @@ function parseFileType( name ) {
     if ( index === -1 ) return "";
 
     return name.slice( index + 1 );
-
-}
-
-/**
- * 异步以utf8编码写入一个文件。
- * @param {string} path - 待写入文件的地址，若该文件已存在，则会覆写该文件，若该文件不存在，则会创建一个文件。
- * @param {string} data - 待写入的字符串内容。
- * @returns {Promise} - Promise代表是否写入成功。
- */
-function writeUtf8File( path, data ) {
-
-    return new Promise( resolve => {
-
-        fs.writeFile( path, data, "utf8", error => {
-
-            resolve( error ? false : true );
-
-        } );
-
-    } );
 
 }
 
