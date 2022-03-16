@@ -120,6 +120,19 @@ async function main() {
 }
 
 /**
+ * 
+ * @param {Object} options -
+ * @param {string} options.inputFontPath
+ * @param {string} options.ouputFontPath
+ * @param {string} options.characters
+ */
+async function subsetFont( options ) {
+
+    // TODO
+
+}
+
+/**
  * 异步读取使用utf-8编码的文件，最后以字符串形式返回该文件的内容。
  * @param {string} path - 待读取的文件的地址，比如"./test.html"。
  * @returns {Promise} - Promise代表字符串形式的文件的内容。
