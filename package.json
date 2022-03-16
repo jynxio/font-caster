@@ -3,7 +3,6 @@
         "subset": "node ./script/index.js"
     },
     "dependencies": {
-        "fontmin": "^0.9.9",
         "opentype.js": "^1.3.4"
     }
 }

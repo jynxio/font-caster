@@ -1,6 +1,6 @@
 const fs = require( "fs" );
 
-const refineFont = require( "./refineFont" );
+// const refineFont = require( "./refineFont" );
 
 const parseHtml = require( "./parseHtml" );
 
@@ -28,6 +28,12 @@ const opentype = require( "opentype.js" );
 main();
 
 async function main() {
+
+    const response = await deepTraversalDirectory( "./dir-test" );
+
+    // for ( let item of response ) console.log( item );
+
+    return;
 
     const html = await readUtf8File( "./static/html/test.html" );
 
@@ -110,6 +116,84 @@ function readUtf8File( path ) {
         reader.on( "end", _ => resolve( output ) );
 
     } );
+
+}
+
+/**
+ * （异步）深度遍历目录，然后返回其内所有文件的信息（文件名与地址）。
+ * @param {string} path - 目录的地址，比如"./page"。
+ * @returns {Promise} - Promise代表一个包含文件信息的数据。
+ */
+async function deepTraversalDirectory( path ) {
+
+    const files = [];
+
+    const dirents = await traversalDirectory( path );
+
+    if ( ! dirents ) return files;
+
+    for ( let dirent of dirents ) {
+
+        const name = dirent.name;
+        const adress = path + "/" + name;
+
+        if ( dirent.isFile() ) {
+
+            files.push( { name, adress } );
+
+        } else if ( dirent.isDirectory() ) {
+
+            files.push( ... await deepTraversalDirectory( adress ) );
+
+        }
+
+    }
+
+    return files;
+
+    /**
+     * （异步）遍历目录，然后返回其内所有文件的信息（fs.Dirent对象）。
+     * @param {string} path - 目录的地址，比如"./page"。
+     * @returns {Promise} - Promise代表是否遍历成功，若成功，则返回包含fs.Dirent对象的数据，否则返回false。
+     */
+    function traversalDirectory( path ) {
+
+        return new Promise( resolve => {
+
+            fs.readdir( path, { encoding: "utf8", withFileTypes: true }, ( error, dirents ) => {
+
+                if ( error ) {
+
+                    console.warn( "读取目录时发生错误：" + error );
+
+                    resolve( false );
+
+                    return;
+
+                }
+
+                resolve( dirents );
+
+            } )
+
+        } );
+
+    }
+
+}
+
+/**
+ * 根据文件名解析文件的类型。
+ * @param {string} name - 文件名，比如"a.txt"。
+ * @returns {string} - 文件类型，比如对于html文件，返回结果是"html"。
+ */
+function parseFileType( name ) {
+
+    const index = name.lastIndexOf( "." );
+
+    if ( index === -1 ) return "";
+
+    return name.slice( index + 1 );
 
 }
 
