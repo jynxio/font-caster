@@ -1,3 +1,5 @@
+// TODO 验证该方法是否正确！
+
 /**
  * （内部方法）对unicode数组或字符串进行去重。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制）。
