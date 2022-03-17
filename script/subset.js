@@ -4,7 +4,7 @@ const opentype = require( "opentype.js" );
 
 /**
  * 根据字符串或unicode数组来子集化字体文件。
- * @param { string | Array<number> } data - 字符串（如"你我"）或存储unicode编码的数组（如[0x4f60, 0x6211]）。
+ * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制）。
  * @param { string } path_origin - 原始的字体文件的路径，比如"./origin.otf"。
  * @param { string } path_subset - 生成的字体文件的路径，比如"./sunset.otf"。
  * @returns { Object } - 子集化字体的相关信息，successfulCharacters属性代表成功截取的字符，successfulUnicodes属性代表
@@ -87,7 +87,7 @@ async function subset( data, path_origin, path_subset ) {
 /**
  * （异步）加载字体文件。
  * @param { string } - 字体文件的路径，比如"./font.otf"。
- * @returns { Promise } - Promise代表加载结果，若成功，则返回{success: true, font}对象，否则返回{success: false, error}对象。
+ * @returns { Promise } - Promise代表是否成功加载字体文件，若成功，则返回{success: true, font}对象，否则返回{success: false, error}对象。
  */
 function loadFont( path ) {
 

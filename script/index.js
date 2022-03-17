@@ -6,13 +6,27 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
-
+const deepTraversal = require( "./deepTraversal" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
+const path = "./page";
 
+deepTraversal( path ).then( response => {
+
+    if ( ! response.success ) {
+
+        console.warn( response.error );
+
+        return;
+
+    }
+
+    console.log( response );
+
+} );
 
 // test
 
