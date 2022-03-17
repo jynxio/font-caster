@@ -6,16 +6,13 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
-const save = require( "./save" );
+const read = require( "./read" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-const data_1 = "你我他你我他";
-const data_2 = [ 32, 234, 32, 543 ];
-
-save( data_2, "./static/character/character.txt" );
+// read( "./script/deduplication" );
 
 // test
 
