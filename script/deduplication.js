@@ -1,5 +1,3 @@
-// TODO 验证该方法是否正确！
-
 /**
  * （内部方法）对unicode数组或字符串进行去重。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制）。
@@ -9,11 +7,7 @@ function deduplication( data, format ) {
 
     const unicodes = new Set();
 
-    for ( let item of data ) {
-
-        unicodes.add( typeof data === "number" ? item : item.codePointAt( 0 ) );
-
-    }
+    typeof( data ) === "string" ? addCharactorToUnicodes() : addUnicodeToUnicodes();
 
     if ( format === 2 ) return Array.from( unicodes );
 
@@ -22,6 +16,18 @@ function deduplication( data, format ) {
         return previous_value + String.fromCodePoint( current_value );
 
     }, "" );
+
+    function addUnicodeToUnicodes() {
+
+        for ( let unicode of data ) unicodes.add( unicode );
+
+    }
+
+    function addCharactorToUnicodes() {
+
+        for ( let character of data ) unicodes.add( character.codePointAt( 0 ) );
+
+    }
 
 }
 

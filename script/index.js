@@ -6,26 +6,24 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
+
+
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-// const font = opentype.loadSync( "./static/font/full/NotoSansSC-Regular.otf");
 
-// const font_family = font.names.fontFamily.en;
-// const font_weight = font.names.fontSubfamily.en;
-// const glyph_number = font.numGlyphs;
-
-// const subset_font_name = font_family + "-" + font_weight + "-subset.otf";
-
-// console.log( font.stringToGlyphs( "你我他" ) );
-// console.log( font.charToGlyph( "你" ) );
-// console.log( font.charToGlyph( "❤️" ) );
-// console.log( font.glyphs.get( 7182 ).path );
 
 // test
 
-main();
+
+
+
+
+
+
+
+// main();
 
 async function main() {
 
