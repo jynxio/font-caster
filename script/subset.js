@@ -1,6 +1,6 @@
-const deduplication = require( "./deduplication" );
-
 const opentype = require( "opentype.js" );
+
+const deduplication = require( "./deduplication" );
 
 /**
  * 根据字符串或unicode数组来子集化字体文件。

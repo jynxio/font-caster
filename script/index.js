@@ -6,27 +6,16 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
-const deepTraversal = require( "./deepTraversal" );
+const save = require( "./save" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-const path = "./page";
+const data_1 = "你我他你我他";
+const data_2 = [ 32, 234, 32, 543 ];
 
-deepTraversal( path ).then( response => {
-
-    if ( ! response.success ) {
-
-        console.warn( response.error );
-
-        return;
-
-    }
-
-    console.log( response );
-
-} );
+save( data_2, "./static/character/character.txt" );
 
 // test
 

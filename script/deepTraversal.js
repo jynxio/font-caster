@@ -6,7 +6,7 @@ const fs = require( "fs" );
  * @returns { Promise } - Promise代表是否遍历成功，若成功则返回{success: true, files}对象，否则返回{success: false, error}对象，
  * 其中files属性是包含{name, path}对象的数组，name代表文件全名，path代表文件地址。
  */
- async function deepTraversal( path ) {
+async function deepTraversal( path ) {
 
     const traversal_response = await Traversal( path );
 

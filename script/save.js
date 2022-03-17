@@ -1,7 +1,9 @@
 const fs = require( "fs" );
 
+const deduplication = require( "./deduplication" );
+
 /**
- * （异步）将字符串或unicode数组存储为txt文件。
+ * （异步）将字符串或unicode数组存储为txt文件，该方法会对输入内容进行去重处理。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制），若传入的是字符串，
  * 则txt文件记录的是字符串，若传入的是unicode数组，则txt文件记录的是以逗号分隔的十进制的unicode编码。
  * @param { string } path - txt文件的地址，比如"./character-set.txt"。
@@ -11,7 +13,7 @@ function save( data, path ) {
 
     return new Promise( resolve => {
 
-        let characters = typeof( data ) === "string" ? data : data.join( "," );
+        let characters = typeof( data ) === "string" ? deduplication( data, 1 ) : deduplication( data, 2 ).join( "," );
 
         fs.writeFile( path, characters, "utf8", error => {
 
