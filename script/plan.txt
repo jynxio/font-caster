@@ -1,3 +1,9 @@
+read.js
+save.js
+deduplication.js
+deepTraversal.js
+subset.js
+
 🆗1 根据字符串或unicode数组来子集化字体文件：
     1.1 入参：
         1.1.1 原始的字体文件的路径
