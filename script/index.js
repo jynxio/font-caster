@@ -6,22 +6,14 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
-const write = require( "./write" );
+const convert = require( "./convert" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-const data_1 = "ABCBC𐺀𐺀";
-const data_2 = [ 65, 66, 67, 65, 66, 67, 69248 ];
-
-write( data_2, "./static/character/character.txt" ).then( response => {
-
-    if ( ! response.success ) return;
-
-    console.log( response );
-
-} );
+const path_1 = "./page/css/CSS（层叠样式表）.html";
+const path_2 = "./page";
 
 // test
 
