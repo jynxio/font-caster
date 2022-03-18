@@ -1,10 +1,6 @@
-read.js
-save.js
-deduplication.js
-deepTraversal.js
-subset.js
-
-// TODO 该懂read，不去重，每个读取文件的结果都分开，每个读取的文件都有名字
+// TODO:
+// 1 修复read和parseHtml的bug。
+// 2 支持otf、ttf、woff、woff2。
 
 🆗1 subset
     1.1 定义：（异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
@@ -31,10 +27,11 @@ subset.js
         3.2.1 { string } - 文件或文件夹的路径，比如"./characters.txt"或"./directory"。
         3.2.2 { boolean } - 默认值为false，当值为false时，文本的内容是什么，读取的结果就是什么。
             当值为true时，程序会认为文本的内容是以逗号分隔的unicode（基于十进制），读取的结果则是unicode数组。
-    3.2 返回：{ Promise } - Promise代表是否读取成功，若成功则返回{success: true, content}对象，
-        否则返回{success: false, error}对象。
+    3.2 返回：{ Promise } - Promise代表是否读取成功，若失败则返回{success: false, error}对象，否则返回
+            {success: true, files}对象，其中files属性是拥有至少一个{name, path, content}对象的数组。
+    3.3 BUG：在MacOS下，如果目录中存在.DS_Store文件，则该方法也会读取到该文件。
 
-4 parseHtml：
+🆗4 parseHtml：
     4.1 定义：提取html文本的标签的内容。
     4.2 入参：
         4.2.1 { string } - html文本的内容，比如使用read方法读取html文件所得到的字符串，html文本中的标签名既可以是大写也可以是小写。
@@ -42,6 +39,8 @@ subset.js
         [ "h1", "h2", "h3" ]时，该方法会提取所有h1、h2、h3标签的内容，同理类推...注意，1.不能输入自闭合标签，比如[ "img" ]；2.既
         可以输入大写的标签，也可以输入小写的标签，比如[ "h1" ]和[ "H1" ]是等价的。
     4.3 返回：{ string } - 标签的内容。
+    4.4 BUG：当文档中使用转义字符（如&gt;）时，该方法会把它当成字符串来解析，而不是解析转义字符转译后的字符。如果用户使用了iconfont的
+        转义字符时，又该怎么解析他们呢？？？
 
 🆗5 convert
     5.1 定义：将字符串转换为unicode数组，或者将unicode数组转换为字符串。

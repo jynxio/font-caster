@@ -1,18 +1,21 @@
 const fs = require( "fs" );
 
+const pathNodejs = require( "path" );
+
 const deepTraversal = require( "./deepTraversal" );
 
 /**
- * （异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件。
+ * （异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件/注意。
  * @param { string } path - 文件或文件夹的路径，比如"./characters.txt"或"./directory"。
  * @param { boolean } [ isUnicode = false ] - 默认值为false，当值为false时，文本的内容是什么，读取的结果就是什么。
  * 当值为true时，程序会认为文本的内容是以逗号分隔的unicode（基于十进制），读取的结果则是unicode数组。
- * @returns { Promise } - Promise代表是否读取成功，若成功则返回{success: true, content}对象，
- * 否则返回{success: false, error}对象。
+ * @returns { Promise } - Promise代表是否读取成功，若失败则返回{success: false, error}对象，否则返回
+ * {success: true, files}对象，其中files属性是拥有至少一个{name, path, content}对象的数组。
+ * @bug 在MacOS下，如果目录中存在.DS_Store文件，则该方法也会读取到该文件。
  */
 async function read( path, isUnicode = false ) {
 
-    const paths = [];
+    const files = [];
 
     const is_directory = fs.lstatSync( path ).isDirectory();
 
@@ -22,28 +25,25 @@ async function read( path, isUnicode = false ) {
 
         if ( ! response.success ) return { success: false, error: response.error };
 
-        response.files.forEach( file => paths.push( file.path ) );
+        response.files.forEach( file => files.push( { name: file.name, path: file.path } ) );
 
     } else {
 
-        paths.push( path );
+        files.push( { name: pathNodejs.basename( path ), path } );
 
     }
 
+    for ( const file of files ) {
 
-    let content = isUnicode ? [] : "";
-
-    for ( const path of paths ) {
-
-        const response = await coreRead( path, isUnicode );
+        const response = await coreRead( file.path, isUnicode );
 
         if ( ! response.success ) return { success: false, error: response.error };
 
-        isUnicode ? content.push( ... response.content ) : ( content += response.content );
+        file.content = response.content;
 
     }
 
-    return { success: true, content };
+    return { success: true, files };
 
 }
 
