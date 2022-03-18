@@ -8,12 +8,25 @@ const opentype = require( "opentype.js" );
 
 const convert = require( "./convert" );
 
+const read = require( "./read" );
+
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-const path_1 = "./page/css/CSS（层叠样式表）.html";
+const path_1 = "./page/html/HTML（超文本标记语言）.html";
 const path_2 = "./page";
+const path_3 = "./static/unicode-test-file/as.txt";
+const path_4 = "./static/unicode-test-file";
+
+read( path_4, true ).then( r => {
+
+    console.log( r.content );
+    console.log( r.content.length );
+
+    console.log( convert( r.content ) );
+
+} );
 
 // test
 
