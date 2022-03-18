@@ -2,7 +2,7 @@ const fs = require( "fs" );
 
 // const refineFont = require( "./refineFont" );
 
-const parseHtml = require( "./parseHtml" );
+const parseHtml = require( "./_parseHtml" );
 
 const opentype = require( "opentype.js" );
 
@@ -24,7 +24,7 @@ read( path_4, true ).then( r => {
     console.log( r.content );
     console.log( r.content.length );
 
-    console.log( convert( r.content ) );
+    // console.log( convert( r.content ) );
 
 } );
 

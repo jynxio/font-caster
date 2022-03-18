@@ -4,8 +4,7 @@ deduplication.js
 deepTraversal.js
 subset.js
 
-// TODO 检查所有函数是否使用了String.prototype.split( "" )方法，该方法有与String.prototype.length一样的bug。
-// TODO 从read.js开始
+// TODO 该懂read，不去重，每个读取文件的结果都分开，每个读取的文件都有名字
 
 🆗1 subset
     1.1 定义：（异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
@@ -22,12 +21,12 @@ subset.js
     2.1 定义：（异步）将字符串或unicode数组存储为txt文件，该方法会对输入内容进行去重处理。
     2.2 入参：
         2.2.1 { string | Array<number> } - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制），若传入的是
-        字符串，则txt文件将存储字符串，若传入的是unicode数组，则txt文件将存储以逗号分隔的十进制的unicode编码。
+        字符串，则txt文件将存储字符串，若传入的是unicode数组，则txt文件将存储以逗号分隔的unicode（基于十进制）。
         2.2.2 { string } - txt文件的地址，比如"./character-set.txt"。
     2.3 返回：{ Promise } - Promise代表是否写入成功，若成功则返回{success: true}对象，否则返回{success: false, error}对象。
 
 🆗3 read：
-    3.1 定义：（异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件，该方法会对读取的内容进行去重处理。
+    3.1 定义：（异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件。
     3.2 入参：
         3.2.1 { string } - 文件或文件夹的路径，比如"./characters.txt"或"./directory"。
         3.2.2 { boolean } - 默认值为false，当值为false时，文本的内容是什么，读取的结果就是什么。
@@ -35,11 +34,14 @@ subset.js
     3.2 返回：{ Promise } - Promise代表是否读取成功，若成功则返回{success: true, content}对象，
         否则返回{success: false, error}对象。
 
-4 读取html文件的标签的内容，或者深度遍历读取一个文件夹内的所有html文件的标签的内容：
-    4.1 入参：
-        4.1.1 文件路径或目录
-        4.1.2 （可选）标签名数组
-    4.2 返回：标签内容
+4 parseHtml：
+    4.1 定义：提取html文本的标签的内容。
+    4.2 入参：
+        4.2.1 { string } - html文本的内容，比如使用read方法读取html文件所得到的字符串，html文本中的标签名既可以是大写也可以是小写。
+        4.2.2 { undefined | Array<string> } （可选）默认值为undefined，当值为undefined时，该方法会提取所有标签的内容。当值为
+        [ "h1", "h2", "h3" ]时，该方法会提取所有h1、h2、h3标签的内容，同理类推...注意，1.不能输入自闭合标签，比如[ "img" ]；2.既
+        可以输入大写的标签，也可以输入小写的标签，比如[ "h1" ]和[ "H1" ]是等价的。
+    4.3 返回：{ string } - 标签的内容。
 
 🆗5 convert
     5.1 定义：将字符串转换为unicode数组，或者将unicode数组转换为字符串。

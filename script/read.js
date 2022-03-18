@@ -2,10 +2,8 @@ const fs = require( "fs" );
 
 const deepTraversal = require( "./deepTraversal" );
 
-const deduplication = require( "./deduplication" );
-
 /**
- * （异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件，该方法会对读取的内容进行去重处理。
+ * （异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件。
  * @param { string } path - 文件或文件夹的路径，比如"./characters.txt"或"./directory"。
  * @param { boolean } [ isUnicode = false ] - 默认值为false，当值为false时，文本的内容是什么，读取的结果就是什么。
  * 当值为true时，程序会认为文本的内容是以逗号分隔的unicode（基于十进制），读取的结果则是unicode数组。
@@ -44,8 +42,6 @@ async function read( path, isUnicode = false ) {
         isUnicode ? content.push( ... response.content ) : ( content += response.content );
 
     }
-
-    content = deduplication( content );
 
     return { success: true, content };
 
