@@ -1,7 +1,7 @@
 const fs = require( "fs" );
 
 const deduplication = require( "./deduplication" );
-// TODO 增加可选的output_format参数。
+
 /**
  * （异步）将字符串或unicode数组存储为txt文件，该方法会对输入内容进行去重处理。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制），若传入的是字符串，
@@ -13,8 +13,6 @@ function write( data, path ) {
 
     return new Promise( resolve => {
 
-        let characters = typeof( data ) === "string" ? deduplication( data, 1 ) : deduplication( data, 2 ).join( "," );
-
         let characters;
 
         if ( typeof( data ) === "string" ) {
@@ -23,11 +21,11 @@ function write( data, path ) {
 
         } else if ( Array.isArray( data ) ) {
 
-
+            characters = deduplication( data ).join( "," );
 
         } else {
 
-
+            return { success: false, error: new TypeError("TypeError: The type of the first parameter is wrong.") };
 
         }
 

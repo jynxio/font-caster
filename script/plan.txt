@@ -17,11 +17,13 @@ subset.js
         failedUnicodes属性，它们分别代表“成功截取的字符”、“成功截取的字符的unicode”、“未能截取的字符”、“未能截取的字符的unicode”，
         并且子集化成功后会自动下载字体文件。
 
-2 （异步）将字符串或unicode数组存储为txt文件，该方法会对输入内容进行去重处理。
-    2.1 入参：
-        2.1.1 字符串或unicode数组
-        2.1.2 生成的文件的路径
-    2.2 返回：undefined
+🆗2 write
+    2.1 定义：（异步）将字符串或unicode数组存储为txt文件，该方法会对输入内容进行去重处理。
+    2.2 入参：
+        2.2.1 { string | Array<number> } - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制），若传入的是
+        字符串，则txt文件将存储字符串，若传入的是unicode数组，则txt文件将存储以逗号分隔的十进制的unicode编码。
+        2.2.2 { string } - txt文件的地址，比如"./character-set.txt"。
+    2.3 返回：{ Promise } - Promise代表是否写入成功，若成功则返回{success: true}对象，否则返回{success: false, error}对象。
 
 3 读取txt文件的内容（字符串或unicode），或者深度遍历读取一个文件夹内的所有txt文件的内容：
     3.1 入参：
