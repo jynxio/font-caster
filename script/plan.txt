@@ -5,6 +5,7 @@ deepTraversal.js
 subset.js
 
 // TODO 检查所有函数是否使用了String.prototype.split( "" )方法，该方法有与String.prototype.length一样的bug。
+// TODO 从read.js开始
 
 🆗1 subset
     1.1 定义：（异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
