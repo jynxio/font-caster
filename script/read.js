@@ -3,7 +3,7 @@ const fs = require( "fs" );
 const deepTraversal = require( "./deepTraversal" );
 
 const deduplication = require( "./deduplication" );
-// TODO 验证该方法
+
 /**
  * （异步）读取一个txt文件的内容或一个文件夹中所有txt文件的内容，txt文件的内容要么是字符串，
  * 要么是以逗号分隔的十进制的unicode编码，该方法会对输出内容进行去重处理。
@@ -37,12 +37,15 @@ async function read( path, format ) {
 
     for ( const path of paths ) {
 
-        const response = readTxt( path, format );
+        const response = await readTxt( path, format );
 
         if ( ! response.success ) return { success: false, error: response.error };
 
-        if ( format === 1 ) content += response.content;
-        else content.concat( response.content );
+        format === 1
+
+            ? content += response.content
+
+            : content.concat( response.content );
 
     }
 

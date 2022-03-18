@@ -6,13 +6,22 @@ const parseHtml = require( "./parseHtml" );
 
 const opentype = require( "opentype.js" );
 
-const read = require( "./read" );
+const subset = require( "./subset" );
 
 /* ---------------------------------------------------------------------------- -------------------*/
 
 // test
 
-// read( "./script/deduplication" );
+const data_1 = "ABCBC𐺀𐺀";
+const data_2 = [ 65, 66, 67, 65, 66, 67, 69248 ];
+
+subset( data_2, "./static/font/full/NotoSerifSC-Regular.otf", "./static/font/condensed/test.otf" ).then( response => {
+
+    if ( ! response.success ) return;
+
+    console.log( response.information );
+
+} );
 
 // test
 

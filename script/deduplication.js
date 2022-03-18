@@ -1,34 +1,23 @@
+const convert = require( "./convert" );
+
 /**
- * （内部方法）对unicode数组或字符串进行去重。
+ * （内部方法）对字符串或unicode数组进行去重。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制）。
- * @param { number } format - 输出值的格式，数字1代表字符串，数字2代表unicode数组。
- * @returns { string | Array<number> } - 字符串或存储unicode编码的数组。
+ * @returns { string | Array<number> } - 若入参是unicode数组，则输出unicode数组，若入参是字符串，则输出字符串。
  */
-function deduplication( data, format ) {
+function deduplication( data ) {
 
-    const unicodes = new Set();
+    if ( typeof( data ) === "string" ) {
 
-    typeof( data ) === "string" ? addCharactorToUnicodes() : addUnicodeToUnicodes();
+        return convert( Array.from( new Set( convert( data ) ) ) );
 
-    if ( format === 2 ) return Array.from( unicodes );
+    } else if ( Array.isArray( data ) ) {
 
-    return Array.from( unicodes ).reduce( ( previous_value, current_value ) => {
-
-        return previous_value + String.fromCodePoint( current_value );
-
-    }, "" );
-
-    function addUnicodeToUnicodes() {
-
-        for ( let unicode of data ) unicodes.add( unicode );
+        return Array.from( new Set( data ) );
 
     }
 
-    function addCharactorToUnicodes() {
-
-        for ( let character of data ) unicodes.add( character.codePointAt( 0 ) );
-
-    }
+    return;
 
 }
 
