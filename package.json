@@ -1,7 +1,4 @@
 {
-    "scripts": {
-        "subset": "node ./script/index.js"
-    },
     "dependencies": {
         "opentype.js": "^1.3.4"
     }
