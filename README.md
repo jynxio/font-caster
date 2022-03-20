@@ -39,23 +39,25 @@
 
 （异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
 
+### 语法
+
+```js
+subset( data, path_origin, path_subset );
+```
+
 ### 入参
 
-| Name          | Type                | Description                                                  |
-| ------------- | ------------------- | ------------------------------------------------------------ |
-| `data`        | `string` || `Array` | 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。 |
-| `path_origin` | `string`            | 原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。 |
-| `path_subset` | `string`            | 生成的字体文件的路径，比如 `"./sunset.otf"`，生成的字体文件的格式必须与生原始的字体文件的格式一致。 |
-
-
-
-1. `data`：`{ string | Array<number> }` - 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。
-2. `path_origin`：`{ string }` - 原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。
-3. `path_subset`：`{ string }` - 生成的字体文件的路径，比如 `"./sunset.otf"`，生成的字体文件的格式必须与生原始的字体文件的格式一致。
+| Name          | Type                        | Description                                                  |
+| ------------- | --------------------------- | ------------------------------------------------------------ |
+| `data`        | `string` or `Array<number>` | 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。 |
+| `path_origin` | `string`                    | 原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。 |
+| `path_subset` | `string`                    | 生成的字体文件的路径，比如 `"./sunset.otf"`，生成的字体文件的格式必须与生原始的字体文件的格式一致。 |
 
 ### 返回
 
-`{ Promise }` - `Promise` 代表是否成功子集化，若失败则返回 `{success: false, error}`，否则返回 `{success: true,information}` 对象。其中 `information` 属性包含 `successfulCharacters`、`successfulUnicodes`、`failedCharacters`、`failedUnicodes`属性，它们分别代表“成功截取的字符”、“成功截取的字符的unicode”、“未能截取的字符”、“未能截取的字符的unicode”，并且子集化成功后会自动下载字体文件。
+| Type      | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| `Promise` | `Promise` 代表是否成功子集化，若失败则返回 `{success: false, error}`，否则返回 `{success: true,information}` 对象。其中 `information` 属性包含 `successfulCharacters`、`successfulUnicodes`、`failedCharacters`、`failedUnicodes`属性，它们分别代表“成功截取的字符”、“成功截取的字符的unicode”、“未能截取的字符”、“未能截取的字符的unicode”，并且子集化成功后会自动下载字体文件。 |
 
 ### 范例
 
