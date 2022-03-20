@@ -255,7 +255,7 @@ convert( unicodes );   // output: "ABC"
 
 该项目暂不支持转换字体的格式。
 
-对于汉字字体文件而言，将 `otf` 转换为 `ttf` 是刚需。然而目前 JS 世界中缺少将 `otf` 转换为 `ttf` 开源库，并且几乎所有的在线转换工具都无法将 `otf` 文件正确的转换为 `ttf` 文件，比如 [fontsquirrel](https://www.fontsquirrel.com/)、[Convertio](https://convertio.co) 等等。
+对于汉字字体文件而言，将 `otf` 转换为 `ttf` 是刚需。然而目前 JS 世界中缺少将 `otf` 转换为 `ttf` 开源库，并且几乎所有的在线转换工具都无法将 `otf` 文件正确的转换为 `ttf` 文件，比如 [fontsquirrel](https://www.fontsquirrel.com/)、[Online Font Converter](https://onlinefontconverter.com/)、[Convertio](https://convertio.co) 等等。
 
 > 如果你愿意向我分享任何有关线索，请通过 issue 告知我吧！🙏
 
