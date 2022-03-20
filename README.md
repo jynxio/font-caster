@@ -25,6 +25,14 @@
 
 # API
 
+## 一览
+
+- **subset：**（异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
+- **read：**（异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件。
+- **write：**（异步）将字符串或unicode数组存储为txt文本，该方法会对输入内容进行去重处理。
+- **parseHtml：**提取html文本的标签的内容。
+- **convert：**将字符串转换为unicode数组，或者将unicode数组转换为字符串。
+
 ## subset
 
 ### 定义
@@ -32,6 +40,14 @@
 （异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
 
 ### 入参
+
+| Name          | Type                    | Description                                                  |
+| ------------- | ----------------------- | ------------------------------------------------------------ |
+| `data`        | `string |Array<number>` | 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。 |
+| `path_origin` | `string`                | 原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。 |
+| `path_subset` | `string`                | 生成的字体文件的路径，比如 `"./sunset.otf"`，生成的字体文件的格式必须与生原始的字体文件的格式一致。 |
+
+
 
 1. `data`：`{ string | Array<number> }` - 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。
 2. `path_origin`：`{ string }` - 原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。
@@ -209,13 +225,23 @@ convert( unicodes );   // output: "ABC"
 
 该项目暂不支持转换字体的格式。
 
+对于汉字字体文件而言，将 `otf` 转换为 `ttf` 是刚需。然而目前 JS 世界中缺少将 `otf` 转换为 `ttf` 开源库，并且几乎所有的在线转换工具都无法将 `otf` 文件正确的转换为 `ttf` 文件，比如 [fontsquirrel](https://www.fontsquirrel.com/)、[Convertio](https://convertio.co) 等等。
+
+> 如果你愿意向我分享任何有关线索，请通过 issue 告知我吧！🙏
 
 
-`fontsquirrel`、`Convertio`、`cloudconvert` 、`AnyConv`、`MiConv` 等工具均无法将 `otf` 文件正确的转换为 `ttf`。
 
-[google-webfonts-helper](https://github.com/majodev/google-webfonts-helper) 提供免费的主流字体文件的下载服务，支持 `ttf` 、`woff`、`woff2` 格式，但是该站点所提供的中文字体文件的字符数量较少，比如 Noto Serif SC 字体文件拥有 8115 个有效字符。
+# 关于汉字字体下载
 
-[Google Fonts](https://fonts.google.com/) 也提供免费的主流字体文件的下载服务，但是对于中文字体而言，仅提供 `otf` 格式，优点是它的中文字体文件的字符数量较多，比如 Noto Serif SC 字体文件拥有 30884 个有效字符。
+- [Google Fonts](https://fonts.google.com/) 提供 Noto Sans 和 Noto Serif 的下载服务（免费 & 开源），缺点是仅提供 `otf` 格式，优点是字符齐全，比如 Noto Serif SC 拥有 30884 个有效字符。
+- [google-webfonts-helper](https://github.com/majodev/google-webfonts-helper) 也提供 Noto Sans 和 Noto Serif 的下载服务（免费 & 开源），缺点是字符较少，比如 Noto Serif SC 拥有 8115 个有效字符，优点是提供 `ttf`、`woff`、`woff2`格式。
+
+
+
+# 关于字体分析
+
+- [FontDrop!](https://fontdrop.info/) 是一个在线的字体分析站点，它可以显示字符数、字形等等，缺点是无法处理字符数量庞大的字体文件。
+- [opentype.js](https://opentype.js.org/index.html) 是一个在线的字体分析站点，它可以显示字形，并可以处理字符数量庞大的字体文件。
 
 
 
