@@ -5,6 +5,8 @@
 
 > 注意：该项目暂未发布至 NPM，但其 API 均可在 Node 运行时中稳定使用。
 
+<br/><br/>
+
 ## 进度
 
 进度：小于 `0.1.0` 。
@@ -19,13 +21,17 @@
 
 > 注意：不要对 `woff2` 格式的字体启用 gzip。
 
+<br/><br/>
+
 ## API
 
 - [subset](#subset)：子集化字体文件。
 - [read](#read)：读取文本文件。
 - [write](#write)：写入文本文件。
-- [parseHtml](#parseHtml)：提取HTML文件的内容。
+- [parseHtml](#parsehtml)：提取HTML文件的内容。
 - [convert](#convert)：将字符转换为unicode，或反之。
+
+<br/>
 
 ### subset
 
@@ -69,6 +75,8 @@ subset( data, path_origin, path_subset ).then( response => {
     
 } );
 ```
+
+<br/>
 
 ### read
 
@@ -117,6 +125,8 @@ read( "./pages" ).then( response => {
 } );
 ```
 
+<br/>
+
 ### write
 
 ##### 定义：
@@ -155,6 +165,8 @@ write( "abcd", "./characters.txt" ).then( response => {
 
 write( [ 65, 66, 67 ], "./characters.txt" ).then( response => { /* same as above */ } );
 ```
+
+<br/>
 
 ### parseHtml
 
@@ -205,6 +217,8 @@ read( "./index.html" ).then( response => {
 } );
 ```
 
+<br/>
+
 ### convert
 
 ##### 定义：
@@ -235,6 +249,8 @@ convert( characters ); // output: [ 65, 66, 67 ]
 convert( unicodes );   // output: "ABC"
 ```
 
+<br/><br/>
+
 ## 一些有用的信息
 
 该项目暂不支持转换字体的格式。
@@ -249,9 +265,13 @@ convert( unicodes );   // output: "ABC"
 - [FontDrop!](https://fontdrop.info/) 是一个在线的字体分析站点，它可以显示字符数、字形等等，缺点是无法处理字符数量庞大的字体文件。
 - [opentype.js](https://opentype.js.org/index.html) 是一个在线的字体分析站点，它可以显示字形，并可以处理字符数量庞大的字体文件。
 
+<br/><br/>
+
 ## 许可
 
 本项目遵循 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE) 。
+
+<br/><br/>
 
 ## 版本控制
 
