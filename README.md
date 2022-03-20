@@ -1,4 +1,4 @@
-# fontcut
+# font-subset
 # 简介
 
 简洁与静态的字体子集化工具，旨在通过减少字体文件中的字符数量来缩减字体文件的体积，该项目基于 [optntype.js](https://github.com/opentypejs/opentype.js) 。
