@@ -1,4 +1,7 @@
 {
+    "scripts": {
+        "count": "node ./script/test.js"
+    },
     "dependencies": {
         "opentype.js": "^1.3.4"
     }

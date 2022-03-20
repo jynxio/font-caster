@@ -1,8 +1,5 @@
 // TODO:
-// 1 修复read和parseHtml的bug。
-// 2 支持otf、ttf、woff、woff2。
-// 3 验证subset支持哪些格式的字体文件：似乎直接支持otf、ttf
-// 4 不要对woff2字体启用gizp
+// 删除test.js
 
 🆗1 subset
     1.1 定义：（异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
