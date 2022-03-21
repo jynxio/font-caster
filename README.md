@@ -1,22 +1,15 @@
 # fontknife
 ## 简介
 
-简洁的字体子集化工具，旨在通过减少字体文件中的字符数量来缩减字体文件的体积，该项目基于 [optntype.js](https://github.com/opentypejs/opentype.js) 。
-
-> 注意：该项目暂未发布至 NPM，但其 API 均可在 Node 运行时中稳定使用。
+简洁的字体子集化工具，通过剔除冗余的字符来缩减字体文件的体积，依赖 Node.js 运行时，基于 [optntype.js](https://github.com/opentypejs/opentype.js)。
 
 <br/><br/>
 
-## 进度
+## 下载
 
-进度：小于 `0.1.0` 。
-
-正在进行：
-
-- [ ] 新增：支持将字体格式转换为 `otf`、`ttf`、`woff`、`woff2`。
-- [ ] 新增：支持浏览器运行时。
-
-> 注意：不要对 `woff2` 格式的字体启用 gzip。
+```
+npm install --save-prod fontknife
+```
 
 <br/><br/>
 
