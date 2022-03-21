@@ -248,22 +248,6 @@ convert( unicodes );   // output: "ABC"
 
 <br/><br/>
 
-## 一些有用的信息
-
-该项目暂不支持转换字体的格式。
-
-对于汉字字体文件而言，将 `otf` 转换为 `ttf` 是刚需。然而目前 JS 世界中缺少将 `otf` 转换为 `ttf` 开源库，并且几乎所有的在线转换工具都无法将 `otf` 文件正确的转换为 `ttf` 文件，比如 [fontsquirrel](https://www.fontsquirrel.com/)、[Online Font Converter](https://onlinefontconverter.com/)、[Convertio](https://convertio.co) 等等。
-
-> 如果你愿意向我分享任何有关线索，请通过 issue 告知我吧！🙏
-
-- [Google Fonts](https://fonts.google.com/) 提供 Noto Sans 和 Noto Serif 的下载服务（免费 & 开源），缺点是仅提供 `otf` 格式，优点是字符齐全，比如 Noto Serif SC 拥有 30884 个有效字符。
-- [google-webfonts-helper](https://github.com/majodev/google-webfonts-helper) 也提供 Noto Sans 和 Noto Serif 的下载服务（免费 & 开源），缺点是字符较少，比如 Noto Serif SC 拥有 8115 个有效字符，优点是提供 `ttf`、`woff`、`woff2`格式。
-
-- [FontDrop!](https://fontdrop.info/) 是一个在线的字体分析站点，它可以显示字符数、字形等等，缺点是无法处理字符数量庞大的字体文件。
-- [opentype.js](https://opentype.js.org/index.html) 是一个在线的字体分析站点，它可以显示字形，并可以处理字符数量庞大的字体文件。
-
-<br/><br/>
-
 ## 许可
 
 本项目遵循 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE) 。
