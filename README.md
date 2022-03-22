@@ -20,6 +20,7 @@ npm install --save-prod fontcaster
 - [write](#write)：写入文本文件。
 - [parseHtml](#parsehtml)：提取HTML文件的内容。
 - [convert](#convert)：将字符转换为unicode，或反之。
+- [deduplication](#deduplication)：对字符串或unicode数组进行去重。
 
 <br/>
 
@@ -74,7 +75,7 @@ subset( data, path_origin, path_subset ).then( response => {
 
 （异步）读取一个使用utf-8编码的文本文件或一个文件夹内所有的此类文本文件。
 
-> **BUG：**在 MacOS 下，如果目标文件夹内存在 `.DS_Store` 文件，则读取目录中的所有使用 `utf-8` 编码的文件时，该方法也会读取到 `.DS_Store` 文件。你可以通过 `name` 属性来判断程序是否误读到了 `.DS_Store` 文件，因为 `.DS_Store` 文件的 `name` 属性的值为 `".DS_Store"` 。
+> 注意：在 MacOS 下，该方法会误读 `.DS_Store` 文件，详见 [BUG: The read API will read the ".DS_Store" file. #1](https://github.com/1337816495/fontcaster/issues/1)。
 
 ##### 语法：
 
@@ -121,7 +122,7 @@ read( "./pages" ).then( response => {
 
 ##### 定义：
 
-（异步）将字符串或unicode数组存储为txt文本，该方法会对输入内容进行去重处理。
+（异步）将字符串或unicode数组存储为txt文本。
 
 ##### 语法：
 
@@ -141,19 +142,23 @@ write( data, path ).then( _ => {} );
 ##### 范例：
 
 ```js
-write( "abcd", "./characters.txt" ).then( response => {
+write( "aabc", "./characters.txt" ).then( response => {
     
-    if ( response.success ) return;
+    if ( response.success ) return; // The content of characters.txt is "aabc".
     
     console.error( response.error );
-    
-    return;
     
 } );
 
 /* or... */
 
-write( [ 65, 66, 67 ], "./characters.txt" ).then( response => { /* same as above */ } );
+write( [ 65, 65, 66, 67 ], "./characters.txt" ).then( response => {
+    
+    if ( response.success ) return; // The content of characters.txt is "65,65,66,67".
+    
+    console.error( response.error );
+    
+} );
 ```
 
 <br/>
@@ -164,7 +169,7 @@ write( [ 65, 66, 67 ], "./characters.txt" ).then( response => { /* same as above
 
 提取html文本的标签的内容。
 
-> **BUG：**当文档中使用转义字符（如 `&gt;` ）时，该方法会把它当成字符串来解析，而不是解析转义字符转译后的字符。
+> 注意：该方法会将转义字符（比如 `&gt;` ）当成字符串来处理，详见 [BUG: Cannot handle escape characters. #2](https://github.com/1337816495/fontcaster/issues/2)，该缺陷将在未来得到修复。
 
 ```js
 parseHtml( characters, tagnames );
@@ -237,6 +242,35 @@ const unicodes = [ 65, 66, 67 ];
 
 convert( characters ); // output: [ 65, 66, 67 ]
 convert( unicodes );   // output: "ABC"
+```
+
+<br/>
+
+### deduplication
+
+**定义：**
+
+对字符串或unicode数组进行去重。
+
+**语法：**
+
+```js
+deduplication( data )
+```
+
+**入参：**
+
+- `data`：`{ string | Array<number> }` - 字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，采用十进制）。
+
+**返回：**
+
+`{ string | Array<number> }` - 若入参是字符串，则输出去重后的unicode数组，若入参是unicode数组，则输出去重后的字符串。
+
+**范例：**
+
+```js
+deduplication( "aabc" );             // output: "abc"
+deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 ```
 
 <br/><br/>
