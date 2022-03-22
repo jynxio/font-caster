@@ -1,4 +1,4 @@
-# font-caster
+# fontcaster
 ## 简介
 
 简洁的字体子集化工具，通过剔除冗余的字符来缩减字体文件的体积，依赖 Node.js 运行时，基于 [optntype.js](https://github.com/opentypejs/opentype.js)。
@@ -8,7 +8,7 @@
 ## 下载
 
 ```
-npm install --save-prod font-caster
+npm install --save-prod fontcaster
 ```
 
 <br/><br/>
