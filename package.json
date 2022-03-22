@@ -1,9 +1,9 @@
 {
-    "name": "fontknife",
+    "name": "fontcaster",
     "description": "Concise font subset tool",
-    "version": "0.1.1",
+    "version": "0.1.0",
     "author": {
-        "name": "jinxio",
+        "name": "Jynxio",
         "email": "1337816495@qq.com"
     },
     "keywords": [
@@ -17,9 +17,9 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/1337816495/fontknife"
+        "url": "https://github.com/1337816495/fontcaster"
     },
-    "main": "dist/fontknife.js",
+    "main": "dist/fontcaster.js",
     "module": "src/index.js",
     "files": [
         "LICENSE",

@@ -8,7 +8,7 @@ const parseHtml = require( "./parseHtml" );
 
 const convert = require( "./convert" );
 
-const fontknife = {
+const fontcaster = {
 
     subset,
 
@@ -22,4 +22,4 @@ const fontknife = {
 
 };
 
-module.exports = fontknife;
+module.exports = fontcaster;
