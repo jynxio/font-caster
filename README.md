@@ -142,15 +142,15 @@ write( data, path ).then( _ => {} );
 ##### 范例：
 
 ```js
-write( "aabc", "./characters.txt" ).then( response => {
+write( "AABC", "./characters.txt" ).then( response => {
     
-    if ( response.success ) return; // The content of characters.txt is "aabc".
+    if ( response.success ) return; // The content of characters.txt is "AABC".
     
     console.error( response.error );
     
 } );
 
-/* or... */
+/* or */
 
 write( [ 65, 65, 66, 67 ], "./characters.txt" ).then( response => {
     
@@ -237,11 +237,8 @@ convert( data );
 ##### 范例：
 
 ```js
-const characters = "ABC";
-const unicodes = [ 65, 66, 67 ];
-
-convert( characters ); // output: [ 65, 66, 67 ]
-convert( unicodes );   // output: "ABC"
+convert( "ABC" );          // output: [ 65, 66, 67 ]
+convert( [ 65, 66, 67 ] ); // output: "ABC"
 ```
 
 <br/>
@@ -269,7 +266,7 @@ deduplication( data )
 **范例：**
 
 ```js
-deduplication( "aabc" );             // output: "abc"
+deduplication( "AABC" );             // output: "ABC"
 deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 ```
 
