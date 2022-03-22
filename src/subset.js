@@ -5,7 +5,7 @@ const convert = require( "./convert" );
 const deduplication = require( "./deduplication" );
 
 /**
- * （异步）根据字符串或unicode数组来子集化字体文件，该方法会对输入内容进行去重处理。
+ * （异步）根据字符串或unicode数组来子集化字体文件，该方法的内部会对输入内容进行去重处理。
  * @param { string | Array<number> } data - 字符串（如"ABC"）或存储unicode编码的数组（如[65, 66, 67]，采用十进制）。
  * @param { string } path_origin - 原始的字体文件的路径，比如"./origin.otf"。
  * @param { string } path_subset - 生成的字体文件的路径，比如"./sunset.otf"。

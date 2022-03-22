@@ -8,6 +8,8 @@ const parseHtml = require( "./parseHtml" );
 
 const convert = require( "./convert" );
 
+const deduplication = require( "./deduplication" );
+
 const fontcaster = {
 
     subset,
@@ -19,6 +21,8 @@ const fontcaster = {
     parseHtml,
 
     convert,
+
+    deduplication,
 
 };
 
