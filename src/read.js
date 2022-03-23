@@ -10,7 +10,7 @@ const deepTraversal = require( "./deepTraversal" );
  * @param { boolean } [ is_unicode = false ] - 默认值为false，当值为false时，文本的内容是什么，读取的结果就是什么。
  * 当值为true时，程序会认为文本的内容是以逗号分隔的unicode（基于十进制），读取的结果则是unicode数组。
  * @returns { Promise } - Promise代表是否读取成功，若失败则返回{success: false, error}对象，否则返回
- * {success: true, files}对象，其中files属性是拥有至少一个{name, path, content}对象的数组。
+ * {success: true, files}对象，其中files属性是拥有至少一个{name, type, path, content}对象的数组。
  * @bug 在MacOS下，如果目录中存在.DS_Store文件，则该方法也会读取到该文件。
  */
 async function read( path, is_unicode = false ) {
@@ -29,7 +29,15 @@ async function read( path, is_unicode = false ) {
 
     } else {
 
-        files.push( { name: pathNodejs.basename( path ), path } );
+        files.push( {
+
+            name: pathNodejs.basename( path ),
+
+            type: pathNodejs.extname( path ).slice( 1 ),
+
+            path,
+
+        } );
 
     }
 
