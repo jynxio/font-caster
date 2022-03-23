@@ -90,7 +90,7 @@ read( path, is_unicode ).then( _ => {} );
 
 ##### 返回：
 
-`{ Promise }` - `Promise` 代表是否读取成功，若失败则返回 `{success: false, error}` 对象，否则返回 `{success: true, files}` 对象，其中 `files` 属性是拥有至少一个 `{name, path, content}` 对象的数组。
+`{ Promise }` - `Promise` 代表是否读取成功，若失败则返回 `{success: false, error}` 对象，否则返回 `{success: true, files}` 对象，其中 `files` 属性是拥有至少一个 `{name, type, path, content}` 对象的数组。
 
 ##### 范例：
 
