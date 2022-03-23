@@ -1,7 +1,7 @@
 {
-    "name": "fontcaster",
+    "name": "font-caster",
     "description": "Concise font subset tool",
-    "version": "0.3.1",
+    "version": "0.1.0",
     "author": {
         "name": "Jynxio",
         "email": "1337816495@qq.com"
@@ -17,9 +17,9 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/1337816495/fontcaster"
+        "url": "https://github.com/1337816495/font-caster"
     },
-    "main": "dist/fontcaster.js",
+    "main": "dist/font-caster.js",
     "module": "src/index.js",
     "files": [
         "LICENSE",

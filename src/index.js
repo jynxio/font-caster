@@ -10,7 +10,7 @@ const convert = require( "./convert" );
 
 const deduplication = require( "./deduplication" );
 
-const fontcaster = {
+module.exports = {
 
     subset,
 
@@ -25,5 +25,3 @@ const fontcaster = {
     deduplication,
 
 };
-
-module.exports = fontcaster;

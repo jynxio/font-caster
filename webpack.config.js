@@ -8,11 +8,11 @@ module.exports = {
 
         path: path.resolve( __dirname, "dist" ),
 
-        filename: "fontcaster.js",
+        filename: "font-caster.js",
 
         library: {
 
-            name: "fontcaster",
+            name: "font-caster",
 
             type: "umd",
 
