@@ -25,19 +25,23 @@ async function read( path, is_unicode = false ) {
 
         if ( ! response.success ) return { success: false, error: response.error };
 
-        response.files.forEach( file => files.push( { name: file.name, path: file.path } ) );
+        response.files.forEach( file => {
+
+            const filename = file.name;
+            const filetype = pathNodejs.extname( filename ).slice( 1 );
+            const filepath = file.path;
+
+            files.push( { name: filename, type: filetype, path: filepath } );
+
+        } );
 
     } else {
 
-        files.push( {
+        const filename = pathNodejs.basename( path );
+        const filetype = pathNodejs.extname( filename ).slice( 1 );
+        const filepath = path;
 
-            name: pathNodejs.basename( path ),
-
-            type: pathNodejs.extname( path ).slice( 1 ),
-
-            path,
-
-        } );
+        files.push( { name: filename, type: filetype, path: filepath } );
 
     }
 
