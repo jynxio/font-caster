@@ -1,7 +1,11 @@
 {
     "name": "fontcaster",
     "description": "Concise font subset tool",
+<<<<<<< Updated upstream
     "version": "0.3.1",
+=======
+    "version": "0.1.1",
+>>>>>>> Stashed changes
     "author": {
         "name": "Jynxio",
         "email": "1337816495@qq.com"

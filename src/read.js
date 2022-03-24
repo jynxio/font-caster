@@ -79,13 +79,17 @@ function coreRead( path, is_unicode = false ) {
         reader.on( "error", error => resolve( { success: false, error } ) );
         reader.on( "end", _ => {
 
-            resolve( ( {
+            if ( ! is_unicode ) {
 
-                success: true,
+                resolve( { success: true, content: data } );
 
-                content: is_unicode ? data.split( "," ).map( unicode => + unicode ) : data,
+                return;
 
-            } ) );
+            }
+
+            const content = data === "" ? [] : data.split( "," ).map( unicode => + unicode );
+
+            resolve( { success: true, content } );
 
         } );
 
