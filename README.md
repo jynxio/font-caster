@@ -26,16 +26,16 @@ npm install font-caster
 
    ```
    |- page
-   	|- chapter-1
-   		|- section-1.html
-   		|- section-2.html
-   		|- ...
-   		|- section-n.html
-   	|- chapter-2
-   		|- section-1.html
-   		|- section-2.html
-   		|- ...
-   		|- section-n.html
+     |- chapter-1
+       |- section-1.html
+       |- section-2.html
+       |- ...
+       |- section-n.html
+     |- chapter-2
+       |- section-1.html
+       |- section-2.html
+       |- ...
+       |- section-n.html
    |- font.ttf
    |- subset.js
    ```
