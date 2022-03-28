@@ -2,7 +2,7 @@
 
 [English](https://github.com/1337816495/font-caster/blob/main/README.md) | [中文简体](https://github.com/1337816495/font-caster/blob/main/README-ZH.md)
 
-A minimalist font subset library that reduces the size of font files by removing redundant characters. The library runs in the Node.js environment.
+A minimalist font-subsetting library that reduces the size of font files by removing redundant characters. The library runs in the Node.js environment.
 
 <br/>
 
