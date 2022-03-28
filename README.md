@@ -1,16 +1,12 @@
 # font-caster
 
-<br/>
+[English](https://github.com/1337816495/font-caster/blob/main/README.md) | [中文简体](https://github.com/1337816495/font-caster/blob/main/README-ZH.md)
 
-## 概述
-
-极简的字体子集化库，通过剔除冗余的字符来缩减字体文件的体积，该库依赖于 Node.js 运行时。
-
-> 工作状态：活跃中。
+A minimalist font subset library that reduces the size of font files by removing redundant characters. The library runs in the Node.js environment.
 
 <br/>
 
-## 下载
+# Download
 
 ```
 npm install font-caster
@@ -18,11 +14,11 @@ npm install font-caster
 
 <br/>
 
-## 快速开始
+# Usage
 
-本节阐述如何一次性的针对多个 html 文件来进行字体子集化，步骤如下：
+This section describes how to subset fonts based on multiple html files, the steps are as follows:
 
-1. 正式开始之前，我们先假设工作区的目录结构如下：
+1. Before we start, let's assume that the directory structure of the workspace is as follows:
 
    ```
    |- page
@@ -40,25 +36,25 @@ npm install font-caster
    |- subset.js
    ```
 
-   `page` 是存储多个 html 文件的文件夹。
+   `page` is a folder with multiple html files.
 
-   `font.ttf` 是原始的字体文件。
+   `font.ttf` is the original font file.
 
-   `subset.js` 是执行字体子集化的脚本，它的任务是一次性的针对 `page` 内的所有 html 文件来进行字体子集化。
+   `subset.js` is the subsetting script, its task is to subset fonts based on all html files in `page`.
 
-2. 然后，在 `subset.js` 中导入 `font-caster` ：
+2. Then import `font-caster` in `subset.js`:
 
    ```js
    const fc = require( "font-caster" );
    ```
 
-3. 然后，提前创建一个用来保存所有 html 文本的内容的变量：
+3. Then create a variable ahead of time that will hold the contents of all the html text:
 
    ```js
    let characters = "";
    ```
 
-4. 然后，读取所有的 html 文本（step 1），然后依次解析出每个文本的标签中的内容（step 2），最后将所有内容累加到提前声明好的 `characters` 变量中（step 3）：
+4. Then read all the html text (step 1), extract the content of all tags (step 2), and finally accumulate all the content into the `characters` variable (step 3):
 
    ```js
    const read_response = await fc.read( "./page" );  // step 1
@@ -72,13 +68,13 @@ npm install font-caster
    }
    ```
 
-5. 最后，基于原始的字体文件和 `characters` 来生成子集化的字体文件：
+5. Finally, create the subsetting font file:
 
    ```js
    const subset_response = await fc.subset( characters, "./font.ttf", "./subset-font.ttf" );
    ```
 
-6. 现在，我们的工作区的目录结构如下：
+6. Our workspace now has the following directory structure:
 
    ```
      |- page
@@ -89,58 +85,56 @@ npm install font-caster
 
 <br/>
 
-## API 手册
+# API
 
-该库提供 6 个 API：
+| name                            | description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
+| [subset](#subset)               | Subset font file.                                            |
+| [parseHtml](#parseHtml)         | Extract the content of the specified tag of the html text.   |
+| [read](#read)                   | Read file.                                                   |
+| [write](#write)                 | Write to file.                                               |
+| [convert](#convert)             | Convert string to unicode array, or convert unicode array to string. |
+| [deduplication](#deduplication) | Deduplicate string or unicode array.                         |
 
-| name                            | description                         |
-| ------------------------------- | ----------------------------------- |
-| [subset](#subset)               | 子集化字体文件                      |
-| [parseHtml](#parseHtml)         | 提取 html 文本的指定的标签的内容    |
-| [read](#read)                   | 读取文件                            |
-| [write](#write)                 | 写入文件                            |
-| [convert](#convert)             | 将字符串转换为 unicode 数组，或反之 |
-| [deduplication](#deduplication) | 对字符串或 unicode 数组进行去重     |
+<br/>
 
 ### subset
 
-（异步）根据字符串或 unicode 数组来子集化字体文件，该方法会对输入内容进行去重处理。
+(asynchronous) Subsets a font file based on string or unicode array, this method will deduplicate the input.
 
-**语法**
+**Syntax**
 
 ```js
 subset( data, origin_path, subset_path ).then( _ => _ );
 ```
 
-**参数**
+**Parameters**
 
 - `data`
 
   `{ string || Array<number> }`
 
-  字符串（如 `"ABC"`）或存储 unicode 编码的数组，比如 `[65, 66, 67]`（基于十进制）。
+  A string (like `"ABC"`) or an array storing unicode like `[65, 66, 67]` (decimal based).
 
 - `origin_path`
 
   `{ string }`
 
-  原始的字体文件的路径，比如 `"./origin.otf"`，也支持 `ttf`、`woff`。
+  The path to the original font file, such as `"./origin.otf"`, also supports `ttf`, `woff`.
 
 - `subset_path`
 
   `{ string }`
 
-  生成的字体文件的路径，比如 `"./sunset.otf"`，生成的字体文件的格式必须与生原始的字体文件的格式一致。
+  The path of the subsetting font file, such as `"./sunset.otf"`, the format of the subsetting font file must be the same as the format of the original font file.
 
-**返回**
+**Return value**
 
 `{ Promise }`
 
- `Promise` 代表是否成功子集化，若失败，则返回 `{success: false, error}`。若成功，则返回 `{success: true, information}` 对象，并自动生成子集化的字体文件。
+`Promise` represents whether the execution was successful or not. If it fails, it returns a `{success: false, error}` object. If successful, a `{success: true, information}` object is returned and a subsetting font file is automatically created.
 
-其中 `information` 包含 `successfulCharacters`、`successfulUnicodes`、`failedCharacters`、`failedUnicodes`属性，它们分别代表“成功截取的字符”、“成功截取的字符的unicode”、“未能截取的字符”、“未能截取的字符的 unicode”。
-
-**范例**
+**Examples**
 
 ```js
 subset( "123", "./origin.ttf", "./subset.ttf" ).then( response => {
@@ -165,39 +159,39 @@ subset( "123", "./origin.ttf", "./subset.ttf" ).then( response => {
 
 ### parseHtml
 
-提取 html 文本的指定的标签的内容。
+Extracts the content of the specified tag from the html text.
 
-该方法暂时无法处理转义字符，比如它会把 `&gt;` 当成字符 `&`、`g`、`t`、`;`来处理，该缺陷已列入工作计划。
+This method cannot correctly parse escape characters, for example, it will treat `&gt;` as characters `&`, `g`, `t`, `;`, this bug has been included in the work plan.
 
-**语法**
+**Syntax**
 
 ```js
 parseHtml( characters, tagnames );
 ```
 
-**参数**
+**Parameters**
 
 - `characters`
 
   `{ string }` 
 
-  html 文本的内容，比如使用 read 方法读取 html 文件所得到的字符串，html 文本中的标签名既可以是大写也可以是小写。
+  The content of html text, such as the string obtained by reading an html file with `read`.
 
 - `tagnames`
 
   `{ undefined | Array<string> }`
 
-  （可选）默认值为 `undefined`，当值为 `undefined` 时，该方法会提取所有标签的内容。当值为 `[ "h1", "h2" ]` 时，该方法会提取所有 `h1`、`h2` 标签的内容，其他标签同理类推。
+  (optional) The default value is `undefined`. if the value is `undefined`, the method will extract the content of all tags. If the value is `[ "h1", "h2" ]`, this method will only extract the contents of all `h1`, `h2` tags, and other tags as well.
 
-  注意：1.不能输入自闭合标签，比如 `[ "img" ]`；2.不区分标签名的大小写。
+  Note: 1.you cannot enter self-closing tags, such as `[ "img" ]`, 2.the tag name is not case-sensitive.
 
-**返回**
+**Return value**
 
 `{ string }`
 
-标签的内容。
+the content of the tags.
 
-**范例**
+**Examples**
 
 ```js
 read( "./index.html" ).then( response => {
@@ -227,37 +221,37 @@ read( "./index.html" ).then( response => {
 
 #### read
 
-（异步）读取一个使用 utf-8 编码的文本文件或一个文件夹内所有的此类文本文件。
+(asynchronously) Read a utf-8 encoded text file or all such files in a folder.
 
-在 MacOS 下，该方法在读取文件夹的内容时会误读 `.DS_Store` 文件，你可以通过 `name` 和 `type` 属性来过滤它。
+For MacOS, this method will misread `.DS_Store` when dealing with folders, you can find and filter it by the `name` and `type` attributes.
 
-**语法**
+**Syntax**
 
 ```js
 read( path, is_unicode ).then( _ => _ );
 ```
 
-**参数**
+**Parameters**
 
 - `path`
 
   `{ string }`
 
-  文件或文件夹的路径，比如 `"./index.html"或"./pages"`。
+  The path to a file or folder, such as `"./index.html" or "./pages"`.
 
 - `is_unicode`
 
   `{ boolean }` 
 
-  可选）默认值为 `false`，当值为 `false` 时，文本的内容是什么，读取的结果就是什么。当值为 `true` 时，程序会认为文本的内容是以逗号分隔的 unicode，比如 `"64,65,66"`（基于十进制），读取的结果则是 unicode 数组，比如 `[64, 65, 66]`（基于十进制）。
+  (optional) The default value is `false`. If the value is `false` , the return value is exactly the same as the text. If the value is `true` , the return value is an array of decimal-based unicode (in this case the API will assume that the content of the text is comma-separated unicode, such as `"64,65,66"`, which is also decimal-based).
 
-**返回**
+**Return value**
 
 `{ Promise }`
 
-`Promise` 代表是否读取成功，若失败，则返回 `{success: false, error}` 对象。若成功，返回 `{success: true, files}` 对象，其中 `files` 是拥有至少一个 `{name, type, path, content}` 对象的数组。
+`Promise` represents whether the execution succeeded or not. If it fails, it returns a `{success: false, error}` object. If successful, it returns a `{success: true, files}` object, where `files` is an array with at least one `{name, type, path, content}` object.
 
-**范例**
+**Examples**
 
 ```js
 read( "./pages" ).then( response => {
@@ -285,35 +279,37 @@ read( "./pages" ).then( response => {
 
 ### write
 
-（异步）将字符串或 unicode 数组存储为文本文件。
+(asynchronously) Write a string or unicode array to a text file.
 
-**语法**
+**Syntax**
 
 ```js
 write( data, path ).then( _ => _ );
 ```
 
-**参数**
+**Parameters**
 
 - `data`
 
   `{ string | Array<number> }`
 
-  字符串（如 `"ABC"`）或存储unicode编码的数组（如 `[65, 66, 67]`，基于十进制），若传入的是字符串，则文本将存储字符串，若传入的是 unicode 数组，则文本将存储以逗号分隔的unicode，比如 `65,66,67`（基于十进制）。
+  String (like `"ABC"`) or unicode array (like `[65, 66, 67]`, based on decimal). If the value is a string, write the string to the text file. If the value is a unicode array, write comma-separated unicode, such as `65,66,67` (based on decimal), to the text file.
 
 - `path`
 
   `{ string }` 
 
-  文本文件的路径，比如 `"./characters.txt"`。
+  Path to a text file, such as `"./characters.txt"`.
 
-**返回**
+**Return value**
 
 `{ Promise }`
 
- `Promise` 代表是否写入成功，若成功，则返回 `{success: true}` 对象。若失败，则返回 `{success: false, error}` 对象。
+`Promise` represents whether the execution succeeded or not. If successful, it returns a `{success: true}` object. If it fails, it returns a `{success: false, error}` object.
 
-**范例**
+**Examples**
+
+If the value of the first parameter is a string.
 
 ```js
 write( "AABC", "./characters.txt" ).then( response => {
@@ -324,6 +320,8 @@ write( "AABC", "./characters.txt" ).then( response => {
     
 } );
 ```
+
+If the value of the first parameter is a unicode array.
 
 ```js
 write( [ 65, 65, 66, 67 ], "./characters.txt" ).then( response => {
@@ -339,29 +337,29 @@ write( [ 65, 65, 66, 67 ], "./characters.txt" ).then( response => {
 
 ### convert
 
-将字符串转换为 unicode 数组，或者将 unicode 数组转换为字符串，unicode 数组的格式是：`[65, 66, 67]`。
+Convert a string to a unicode array, or convert a unicode array to a string, the format of the unicode array is: `[65, 66, 67]`.
 
-**语法**
+**Syntax**
 
 ```js
 convert( data );
 ```
 
-**参数**
+**Parameters**
 
 - `data`
 
   `{ string | Array<number> }`
 
-  字符串（如 `"ABC"`）或存储 unicode 编码的数组，比如 `[65, 66, 67]`（基于十进制）。
+  String (like `"ABC"`) or unicode array like `[65, 66, 67]` (decimal based).
 
-**返回**
+**Return value**
 
 `{ string | Array<number> }`
 
-若入参是字符串，则返回 unicode 数组，若入参是 unicode 数组，则返回字符串。
+If the parameter is a string, it returns a unicode array. If the parameter is a unicode array, it returns a string.
 
-**范例**
+**Examples**
 
 ```js
 convert( "ABC" );          // output: [ 65, 66, 67 ]
@@ -372,29 +370,29 @@ convert( [ 65, 66, 67 ] ); // output: "ABC"
 
 ### deduplication
 
-对字符串或 unicode 数组进行去重。
+Deduplicate string or unicode array.
 
-**语法**
+**Syntax**
 
 ```js
 deduplication( data )；
 ```
 
-**参数**
+**Parameters**
 
 - `data`
 
   `{ string | Array<number> }`
 
-  字符串（如 `"ABC"`）或存储 unicode 编码的数组，比如 `[65, 66, 67]`（基于十进制）。
+  String (like `"ABC"`) or unicode array like `[65, 66, 67]` (decimal based).
 
-**返回**
+**Return value**
 
 `{ string | Array<number> }`
 
-若入参是字符串，则返回去重后的字符串。若入参是 unicode 数组，则返回去重后的 unicode 数组。
+If parameter is a string, it returns the deduplicated string. If parameter is a unicode array, it returns the deduplicated unicode array.
 
-**范例**
+**Examples**
 
 ```js
 deduplication( "AABC" );             // output: "ABC"
@@ -403,18 +401,18 @@ deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 
 <br/>
 
-## 许可
+# License
 
-该库遵循 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE) 。
-
-<br/>
-
-## 版本控制
-
-该库遵循 [语义化版本控制](https://semver.org/lang/zh-CN/) 。
+[MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE).
 
 <br/>
 
-## 致谢
+# Versioning
 
-感谢 [optntype.js](https://github.com/opentypejs/opentype.js) 的贡献，该库基于 opentype.js。
+[Semantic Versioning 2.0.0](https://semver.org/)
+
+<br/>
+
+# Thanks
+
+Thanks to [optntype.js](https://github.com/opentypejs/opentype.js), the library is based on `opentype.js`.
