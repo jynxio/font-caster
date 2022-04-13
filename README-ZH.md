@@ -1,6 +1,6 @@
 # font-caster
 
-[English](https://github.com/1337816495/font-caster/blob/main/README.md) | [中文简体](https://github.com/1337816495/font-caster/blob/main/README-ZH.md)
+[English](https://github.com/jynxio/font-caster/blob/main/README.md) | [中文简体](https://github.com/jynxio/font-caster/blob/main/README-ZH.md)
 
 极简的字体子集化库，通过剔除冗余的字符来缩减字体文件的体积，该库依赖于 Node.js 运行时。
 
