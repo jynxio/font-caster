@@ -1,13 +1,19 @@
-# font-caster
-
-[English](https://github.com/jynxio/font-caster/blob/main/README.md) | [中文简体](https://github.com/jynxio/font-caster/blob/main/README-ZH.md)
-
-A minimalist font-subsetting library that reduces the size of font files by removing redundant characters. The library runs in the Node.js environment.
-> 🟢 Status: active
+<h1 align="center">font-caster</h1>
+<p align="center">
+    <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/v/font-caster"/></a>
+    <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/dm/font-caster"/></a>
+    <a href="https://github.com/jynxio/font-caster/blob/main/LICENSE"><img src="https://badgen.net/npm/license/font-caster"/></a>
+</p>
+<p align="center">
+    <a href="https://github.com/jynxio/font-caster/blob/main/README.md"><img src="https://badgen.net/badge/language/English/cyan"/></a>
+    <a href="https://github.com/jynxio/font-caster/blob/main/README-ZH.md"><img src="https://badgen.net/badge/language/中文简体/cyan"/></a>
+</p>
+<p align="center">A minimalist font-subsetting library that reduces the size of font files by removing redundant characters.</p>
+<p align="center">The library runs in the Node.js environment.</p>
 
 <br/>
 
-# Download
+## Download
 
 ```
 npm install font-caster
@@ -15,7 +21,7 @@ npm install font-caster
 
 <br/>
 
-# Usage
+## Usage
 
 This section describes how to subset fonts based on multiple html files, the steps are as follows:
 
@@ -86,7 +92,7 @@ This section describes how to subset fonts based on multiple html files, the ste
 
 <br/>
 
-# API
+## API
 
 | name                            | description                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
@@ -220,7 +226,7 @@ read( "./index.html" ).then( response => {
 
 <br/>
 
-#### read
+### read
 
 (asynchronously) Read a utf-8 encoded text file or all such files in a folder.
 
@@ -402,18 +408,18 @@ deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 
 <br/>
 
-# License
+## License
 
 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE).
 
 <br/>
 
-# Versioning
+## Versioning
 
 [Semantic Versioning 2.0.0](https://semver.org/)
 
 <br/>
 
-# Thanks
+## Thanks
 
 Thanks to [optntype.js](https://github.com/opentypejs/opentype.js), this library is based on `opentype.js`.
