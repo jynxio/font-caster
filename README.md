@@ -422,4 +422,4 @@ deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 
 ## Thanks
 
-Thanks to [optntype.js](https://github.com/opentypejs/opentype.js), this library is based on `opentype.js`.
+Thanks to [opentype.js](https://github.com/opentypejs/opentype.js), this library is based on `opentype.js`.
