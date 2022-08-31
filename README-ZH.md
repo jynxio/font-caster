@@ -424,4 +424,4 @@ deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 
 ## 致谢
 
-感谢 [optntype.js](https://github.com/opentypejs/opentype.js) 的贡献，该库基于 opentype.js。
+感谢 [opentype.js](https://github.com/opentypejs/opentype.js) 的贡献，该库基于 opentype.js。
