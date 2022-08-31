@@ -1,13 +1,19 @@
-# font-caster
-
-[English](https://github.com/jynxio/font-caster/blob/main/README.md) | [中文简体](https://github.com/jynxio/font-caster/blob/main/README-ZH.md)
-
-极简的字体子集化库，通过剔除冗余的字符来缩减字体文件的体积，该库依赖于 Node.js 运行时。
-> 🟢 状态：活跃的
+<h1 align="center">font-caster</h1>
+<p align="center">
+    <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/v/font-caster"/></a>
+    <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/dm/font-caster"/></a>
+    <a href="https://github.com/jynxio/font-caster/blob/main/LICENSE"><img src="https://badgen.net/npm/license/font-caster"/></a>
+</p>
+<p align="center">
+    <a href="https://github.com/jynxio/font-caster/blob/main/README.md"><img src="https://badgen.net/badge/language/English/cyan"/></a>
+    <a href="https://github.com/jynxio/font-caster/blob/main/README-ZH.md"><img src="https://badgen.net/badge/language/中文简体/cyan"/></a>
+</p>
+<p align="center">极简的字体子集化库，通过剔除冗余的字符来缩减字体文件的体积。</p>
+<p align="center">该库依赖于 Node.js 运行时。</p>
 
 <br/>
 
-# 下载
+## 下载
 
 ```
 npm install font-caster
@@ -15,7 +21,7 @@ npm install font-caster
 
 <br/>
 
-# 快速开始
+## 快速开始
 
 本节阐述如何一次性的针对多个 html 文件来进行字体子集化，步骤如下：
 
@@ -86,7 +92,7 @@ npm install font-caster
 
 <br/>
 
-# API
+## API
 
 | name                            | description                           |
 | ------------------------------- | ------------------------------------- |
@@ -222,7 +228,7 @@ read( "./index.html" ).then( response => {
 
 <br/>
 
-#### read
+### read
 
 （异步）读取一个基于 utf-8 编码的文本文件或一个文件夹内的所有的此类文件。
 
@@ -404,18 +410,18 @@ deduplication( [ 65, 65, 66, 67 ] ); // output: [ 65, 66, 67 ]
 
 <br/>
 
-# 许可
+## 许可
 
 该库遵循 [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE) 。
 
 <br/>
 
-# 版本控制
+## 版本控制
 
 该库遵循 [语义化版本控制](https://semver.org/lang/zh-CN/) 。
 
 <br/>
 
-# 致谢
+## 致谢
 
 感谢 [optntype.js](https://github.com/opentypejs/opentype.js) 的贡献，该库基于 opentype.js。
