@@ -11,7 +11,7 @@
 
 ## Document 🥳
 
-Please check this [document](https://font-caster-documentation.vercel.app/), it supports `English` and `简体中文`.
+Please check this [document](https://font-caster-documentation-dnqwse37g-jynxio.vercel.app/), it supports `English` and `简体中文`.
 
 <br/>
 
