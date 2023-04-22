@@ -13,6 +13,11 @@
 
 Please check this [document](https://font-caster-documentation-dnqwse37g-jynxio.vercel.app/), it supports `English` and `简体中文`.
 
+> ⚠️ If you want to subset `Fira Code`
+>
+> If your `Fira Code` is downloaded from GitHub, then the resulting subset file cannot be parsed by the browser. This seems to be because the file lacks some metadata required by the browser. If your `Fira Code` is downloaded from Google Fonts, then the resulting subset file can be parsed by the browser. Therefore, I suggest that you use `Fira Code` from Google Fonts for subsetting work. Currently, version `5` of `Fira Code` is available on Google Fonts and version `6` is available on GitHub (don't worry! `Fira Code` plans to update its font versions on Google Fonts).
+
+
 <br/>
 
 ## License 
