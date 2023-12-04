@@ -1,39 +1,42 @@
+> ⚠️ The repository has been archived, and I recommend using the better alternative [cn-font-split](https://github.com/KonghaYao/cn-font-split)。
+
+<br />
+
 <h1 align="center">font-caster</h1>
 <p align="center">
     <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/v/font-caster"/></a>
     <a href="https://www.npmjs.com/package/font-caster"><img src="https://badgen.net/npm/dm/font-caster"/></a>
     <a href="https://github.com/jynxio/font-caster/blob/main/LICENSE"><img src="https://badgen.net/npm/license/font-caster"/></a>
 </p>
-<p align="center">A minimalist font-subsetting library that reduces the size of font files by removing redundant characters.</p>
-<p align="center">( The library runs in the Node.js environment )</p>
+<p align="center">font-caster: A Minimalist Font-Subsetting Library for Streamlining Font Files</p>
+<p align="center">(Only supports Node.js runtime.)</p>
 
 <br/>
 
-## Document 🥳
+## Document
 
 Please check this [document](https://font-caster-documentation-dnqwse37g-jynxio.vercel.app/), it supports `English` and `简体中文`.
 
-> ⚠️ If you want to subset `Fira Code`
+> Important Note on Subsetting `Fira Code`
 >
-> If your `Fira Code` is downloaded from GitHub, then the resulting subset file cannot be parsed by the browser. This seems to be because the file lacks some metadata required by the browser. If your `Fira Code` is downloaded from Google Fonts, then the resulting subset file can be parsed by the browser. Therefore, I suggest that you use `Fira Code` from Google Fonts for subsetting work. Currently, version `5` of `Fira Code` is available on Google Fonts and version `6` is available on GitHub (don't worry! `Fira Code` plans to update its font versions on Google Fonts).
-
+> If you obtain `Fira Code` from GitHub, the browser may not parse the subset file correctly due to missing metadata. In contrast, `Fira Code` from Google Fonts does not have this issue. For effective subsetting, it's recommended to use `Fira Code` sourced from Google Fonts. Google Fonts currently offers version `5` of `Fira Code`, while GitHub provides version `6`. Notably, `Fira Code` is expected to update its versions on Google Fonts soon.
 
 <br/>
 
 ## License 
 
-This library is under [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE)
+font-caster is distributed under the [MIT License](https://github.com/1337816495/font-filter/blob/main/LICENSE)
 
 <br/>
 
 ## Versioning
 
-This library is under [Semantic Versioning 2.0.0](https://semver.org/)
+font-caster adheres to [Semantic Versioning 2.0.0](https://semver.org/)
 
 <br/>
 
 ## Thanks
 
-Thanks to [opentype.js](https://github.com/opentypejs/opentype.js), this library is based on it.
+Special thanks to [opentype.js](https://github.com/opentypejs/opentype.js), as font-caster is developed upon it.
 
 <br/>

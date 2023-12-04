@@ -1,10 +1,10 @@
 {
     "name": "font-caster",
     "description": "Minimalist font-subsetting library / 极简的字体子集化库",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "author": {
         "name": "Jynxio",
-        "email": "1337816495@qq.com"
+        "email": "jinxiaomatrix@gmail.com"
     },
     "keywords": [
         "font",
